@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bg_color">#FF242A32</color>
+    <color name="date_info">#FF969696</color>
+    <color name="button_color">#32A873</color>
+    <color name="auth_bg_color">#121212</color>
+    <color name="bottom_icon_color">#A4A4A4</color>
 </resources>

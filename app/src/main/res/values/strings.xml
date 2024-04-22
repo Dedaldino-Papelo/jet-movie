@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Movie</string>
+    <string name="app_name">Popular Movie</string>
+    <string name="details">movieDetails</string>
+    <string name="splash">splashScreen</string>
+    <string name="splash_title">Watch movies anytime anywhere</string>
+    <string name="splash_subtitle">Explore a vast collection of blockbuster movies, timeless classics, and the latest releases.</string>
+    <string name="login_txt">Login</string>
+    <string name="signup_txt">Sign Up</string>
+    <string name="get_in">Get In</string>
+    <string name="create_account">Create Account</string>
+    <string name="favorites">Favorites</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
 </resources>
