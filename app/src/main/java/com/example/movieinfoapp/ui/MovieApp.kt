@@ -33,6 +33,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navOptions
 import com.example.movieinfoapp.R
 import com.example.movieinfoapp.ui.screens.DetailScreen
 import com.example.movieinfoapp.ui.screens.FavoriteScreen
@@ -137,7 +138,9 @@ fun MovieApp() {
             val navigationItemColors = NavigationBarItemDefaults.colors(
                 selectedIconColor = colorResource(R.color.button_color),
                 selectedTextColor = colorResource(R.color.button_color),
-                indicatorColor = colorResource(R.color.auth_bg_color)
+                indicatorColor = colorResource(R.color.auth_bg_color),
+                unselectedIconColor = colorResource(R.color.bottom_icon_color),
+                unselectedTextColor = colorResource(R.color.bottom_icon_color)
             )
 
             if (!(currentScreen.title == R.string.splash ||
@@ -153,7 +156,10 @@ fun MovieApp() {
                             selected = selectedItemIndex == index,
                             onClick = {
                                 selectedItemIndex = index
-                                navController.navigate(item.title)
+                                navController.navigate(item.title, navOptions = navOptions {
+                                    launchSingleTop = true
+                                    popUpTo(navController.graph.id)
+                                })
                             },
                             colors = navigationItemColors,
                             icon = {
