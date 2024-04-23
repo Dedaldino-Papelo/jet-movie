@@ -1,5 +1,6 @@
 package com.example.movieinfoapp.network
 
+import com.example.movieinfoapp.BuildConfig
 import com.example.movieinfoapp.model.MovieDetails
 import com.example.movieinfoapp.model.MovieList
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -11,7 +12,7 @@ import retrofit2.http.Path
 
 
 private const val BASE_URL = "https://api.themoviedb.org/3/movie/"
-private const val API_KEY = "0646faef692c8a46d47607d23054b375"
+private const val API_KEY = BuildConfig.API_KEY
 
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(Json.asConverterFactory(("application/json".toMediaType())))
