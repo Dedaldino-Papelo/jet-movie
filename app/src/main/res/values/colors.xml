@@ -12,4 +12,5 @@
     <color name="button_color">#32A873</color>
     <color name="auth_bg_color">#121212</color>
     <color name="bottom_icon_color">#A4A4A4</color>
+    <color name="searchBar_color">#2B2930</color>
 </resources>

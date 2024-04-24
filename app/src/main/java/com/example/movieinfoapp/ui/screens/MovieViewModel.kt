@@ -25,10 +25,17 @@ sealed interface MovieDetailsUiState {
 }
 
 class MovieViewModel: ViewModel(){
+
+    var searchText: String by mutableStateOf("")
+        private set
+
     var movieUiState : MovieUiState by mutableStateOf(MovieUiState.Loading)
         private set
 
     var movieDetailsUiState : MovieDetailsUiState by mutableStateOf(MovieDetailsUiState.Loading)
+        private set
+
+    var SearchedMoviesState: MovieUiState by mutableStateOf(MovieUiState.Loading)
         private set
 
     init {
@@ -57,6 +64,23 @@ class MovieViewModel: ViewModel(){
                 Log.d("moveId", response.toString())
             } catch (e: IOException){
                 MovieDetailsUiState.Error
+            }
+        }
+    }
+
+    fun updateSearchText(input: String){
+        searchText = input
+    }
+
+    fun getMovieBySearch(){
+        viewModelScope.launch {
+            try {
+                val movieRepository = NetworkMoviesRepository()
+                val response = movieRepository.getMovieBySearch(param = searchText)
+                SearchedMoviesState = MovieUiState.Success(response.results)
+                Log.d("search", response.toString())
+            } catch (e: IOException){
+               MovieUiState.Error
             }
         }
     }

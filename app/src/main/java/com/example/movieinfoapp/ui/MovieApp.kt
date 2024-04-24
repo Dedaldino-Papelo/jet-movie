@@ -72,7 +72,8 @@ fun MovieAppBar(
     if (!(currentScreen.title == R.string.splash ||
                 currentScreen.title == R.string.signup_txt ||
                 currentScreen.title == R.string.login_txt ||
-                currentScreen.title == R.string.app_name)) {
+                currentScreen.title == R.string.app_name)
+    ) {
 
         CenterAlignedTopAppBar(
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -90,7 +91,8 @@ fun MovieAppBar(
                     currentScreen.title != R.string.favorites
                     && currentScreen.title != R.string.settings
                     && currentScreen.title != R.string.search
-                    && currentScreen.title != R.string.app_name) {
+                    && currentScreen.title != R.string.app_name
+                ) {
 
                     IconButton(onClick = navigateUp) {
                         Icon(
@@ -145,7 +147,8 @@ fun MovieApp() {
 
             if (!(currentScreen.title == R.string.splash ||
                         currentScreen.title == R.string.signup_txt ||
-                        currentScreen.title == R.string.login_txt)
+                        currentScreen.title == R.string.login_txt ||
+                        currentScreen.title == R.string.details)
             ) {
 
                 NavigationBar(
@@ -218,7 +221,14 @@ fun MovieApp() {
             }
 
             composable(MovieAppScreen.Search.name) {
-                SearchScreen()
+                SearchScreen(
+                    value = movieViewModel.searchText,
+                    onValueChange = { newValue ->
+                        movieViewModel.updateSearchText(newValue)
+                        movieViewModel.getMovieBySearch()
+                    },
+                    movies = movieViewModel.SearchedMoviesState
+                )
             }
 
             composable(MovieAppScreen.Settings.name) {

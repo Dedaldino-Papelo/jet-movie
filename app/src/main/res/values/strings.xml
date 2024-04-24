@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Popular Movie</string>
-    <string name="details">movieDetails</string>
+    <string name="details">Details</string>
     <string name="splash">splashScreen</string>
     <string name="splash_title">Watch movies anytime anywhere</string>
     <string name="splash_subtitle">Explore a vast collection of blockbuster movies, timeless classics, and the latest releases.</string>

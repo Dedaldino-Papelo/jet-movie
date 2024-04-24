@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class Movie(
     val adult : Boolean,
     @SerialName(value = "backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerialName(value = "genre_ids")
     val genreIds: List<Int>,
     val id: Int,
@@ -18,7 +18,7 @@ data class Movie(
     val overview: String,
     val popularity: Double,
     @SerialName(value = "poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerialName(value = "release_date")
     val releaseDate: String,
     val title: String,

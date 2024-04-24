@@ -9,11 +9,13 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,15 +41,14 @@ fun HomeScreen(
     when (movieUiState) {
         is MovieUiState.Loading -> LoadingScreen(
             modifier = modifier
-                .fillMaxSize()
-                .background(colorResource(R.color.bg_color))
+                .background(colorResource(R.color.auth_bg_color))
         )
         is MovieUiState.Success -> MoviesGridScreen(
             onClick = onClick,
             movies = movieUiState.movies,
             modifier = modifier
                 .fillMaxSize()
-                .background(colorResource(R.color.bg_color))
+                .background(colorResource(R.color.auth_bg_color))
         )
 
         is MovieUiState.Error -> ErrorScreen(
@@ -61,14 +62,14 @@ fun HomeScreen(
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier){
     Column(
-        modifier = modifier,
+        modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Loading...",
-            fontSize = 24.sp,
-            color = colorResource(R.color.white)
+        CircularProgressIndicator(
+            modifier = modifier.size(60.dp),
+            color = colorResource(R.color.button_color),
+            strokeWidth = 8.dp,
         )
     }
 }
@@ -131,6 +132,14 @@ fun MovieCard(
             contentDescription = "movie",
             contentScale = ContentScale.Crop,
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun LoadingScreenPreview(){
+    MovieInfoAppTheme {
+        LoadingScreen()
     }
 }
 
