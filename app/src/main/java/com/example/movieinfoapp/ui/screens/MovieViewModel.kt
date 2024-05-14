@@ -44,13 +44,13 @@ class MovieViewModel: ViewModel(){
 
     private fun getMovies(){
         viewModelScope.launch {
+            movieUiState = MovieUiState.Loading
             try {
                 val moviesRepository = NetworkMoviesRepository()
                 val result = moviesRepository.getMovies()
                 movieUiState = MovieUiState.Success(result.results)
             } catch (e: IOException){
                 MovieUiState.Error
-                Log.d("error", e.toString())
             }
         }
     }
@@ -78,7 +78,6 @@ class MovieViewModel: ViewModel(){
                 val movieRepository = NetworkMoviesRepository()
                 val response = movieRepository.getMovieBySearch(param = searchText)
                 SearchedMoviesState = MovieUiState.Success(response.results)
-                Log.d("search", response.toString())
             } catch (e: IOException){
                MovieUiState.Error
             }

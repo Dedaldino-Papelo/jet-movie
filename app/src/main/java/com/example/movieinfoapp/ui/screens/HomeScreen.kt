@@ -54,7 +54,7 @@ fun HomeScreen(
         is MovieUiState.Error -> ErrorScreen(
             modifier = modifier
                 .fillMaxSize()
-                .background(colorResource(R.color.bg_color))
+                .background(colorResource(R.color.auth_bg_color))
         )
     }
 }

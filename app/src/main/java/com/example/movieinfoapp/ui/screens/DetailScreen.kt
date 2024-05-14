@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -40,12 +42,14 @@ fun DetailScreen(
 @Composable
 fun Loading(modifier: Modifier = Modifier){
     Column(
+        modifier = modifier,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Loading...",
-            fontSize = 24.sp
+        CircularProgressIndicator(
+            modifier = modifier.size(60.dp),
+            color = colorResource(R.color.button_color),
+            strokeWidth = 8.dp,
         )
     }
 }
@@ -60,7 +64,7 @@ fun MoveDetailsScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(colorResource(R.color.bg_color))
+            .background(colorResource(R.color.auth_bg_color))
     ) {
         Box(
             modifier = modifier,
@@ -74,7 +78,7 @@ fun MoveDetailsScreen(
                 contentScale = ContentScale.Crop,
                 modifier = modifier
                     .fillMaxWidth()
-                    .height(250.dp)
+                    .height(280.dp)
             )
         }
         

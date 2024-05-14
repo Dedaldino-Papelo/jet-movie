@@ -36,6 +36,7 @@ fun SignInScreen(
     modifier: Modifier = Modifier
 ){
     var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -62,7 +63,11 @@ fun SignInScreen(
                 onValueChange = { email = it },
                 modifier = modifier.fillMaxWidth()
             )
-            PasswordTextInput(modifier = modifier.fillMaxWidth())
+            PasswordTextInput(
+                password = password,
+                onValueChange = { password = it },
+                modifier = modifier.fillMaxWidth()
+            )
         }
         Spacer(modifier = modifier.height(30.dp))
 

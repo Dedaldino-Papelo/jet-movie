@@ -6,8 +6,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
@@ -19,13 +21,22 @@ fun EmailTextInput(
     email: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     OutlinedTextField(
         modifier = modifier,
         value = email,
         onValueChange = { onValueChange(it) },
-        label = { Text(text = "Email") },
+        label = {
+            Text(
+                text = "Email",
+                color = colorResource(R.color.button_color)
+            )
+        },
         textStyle = TextStyle(colorResource(R.color.white), fontSize = 13.sp),
+        colors = TextFieldDefaults.textFieldColors(
+            containerColor = Color.Transparent,
+            focusedIndicatorColor = colorResource(R.color.button_color)
+        ),
         placeholder = { Text(text = "example@gmail.com") },
         leadingIcon = {
             Icon(
