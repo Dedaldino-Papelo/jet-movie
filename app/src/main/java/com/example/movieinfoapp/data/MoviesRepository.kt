@@ -2,7 +2,7 @@ package com.example.movieinfoapp.data
 
 import com.example.movieinfoapp.model.MovieDetails
 import com.example.movieinfoapp.model.MovieList
-import com.example.movieinfoapp.network.MovieApi
+import com.example.movieinfoapp.network.MovieApiService
 
 interface MoviesRepository {
     suspend fun getMovies() : MovieList
@@ -10,15 +10,15 @@ interface MoviesRepository {
     suspend fun getMovieBySearch(param: String): MovieList
 }
 
-class NetworkMoviesRepository() : MoviesRepository {
+class NetworkMoviesRepository(private val movieApiService: MovieApiService) : MoviesRepository {
     override suspend fun getMovies(): MovieList {
-        return MovieApi.retrofitService.getMovies()
+        return movieApiService.getMovies()
     }
     override suspend fun getMovieById(id: Int): MovieDetails {
-        return MovieApi.retrofitService.getMovieById(id = id)
+        return movieApiService.getMovieById(id = id)
     }
 
     override suspend fun getMovieBySearch(param: String): MovieList {
-        return MovieApi.retrofitService.getMovieBySearch(query = param)
+        return movieApiService.getMovieBySearch(query = param)
     }
 }

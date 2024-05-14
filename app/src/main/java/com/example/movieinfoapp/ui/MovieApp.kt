@@ -111,7 +111,7 @@ fun MovieAppBar(
 @Composable
 fun MovieApp() {
     val navController = rememberNavController()
-    val movieViewModel: MovieViewModel = viewModel()
+    val movieViewModel: MovieViewModel = viewModel(factory = MovieViewModel.Factory)
 
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentScreen = MovieAppScreen.valueOf(
