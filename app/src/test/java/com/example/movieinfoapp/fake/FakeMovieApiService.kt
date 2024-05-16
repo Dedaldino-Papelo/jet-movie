@@ -9,7 +9,7 @@ class FakeMovieApiService: MovieApiService {
         return FakeDataSource.movieList
     }
     override suspend fun getMovieById(id: Int): MovieDetails {
-        TODO("Not yet implemented")
+        return FakeDataSource.movieDetails
     }
     override suspend fun getMovieBySearch(query: String): MovieList {
         TODO("Not yet implemented")

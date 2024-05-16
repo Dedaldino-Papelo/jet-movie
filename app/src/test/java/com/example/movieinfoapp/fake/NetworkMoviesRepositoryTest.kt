@@ -14,4 +14,13 @@ class NetworkMoviesRepositoryTest {
         )
         assertEquals(FakeDataSource.movieList, repository.getMovies())
     }
+
+    @Test
+    fun networkMoviesRepository_getMovieById_verifyMovieDetails() =
+        runTest {
+            val repository = NetworkMoviesRepository(
+                movieApiService = FakeMovieApiService()
+            )
+            assertEquals(FakeDataSource.movieDetails, repository.getMovieById(823465))
+        }
 }

@@ -1,6 +1,7 @@
 package com.example.movieinfoapp.fake
 
 import com.example.movieinfoapp.rules.TestDispatcherRule
+import com.example.movieinfoapp.ui.screens.MovieDetailsUiState
 import com.example.movieinfoapp.ui.screens.MovieUiState
 import com.example.movieinfoapp.ui.screens.MovieViewModel
 import kotlinx.coroutines.test.runTest
@@ -18,6 +19,16 @@ class MovieViewModelTest {
             Assert.assertEquals(
                 MovieUiState.Success(FakeDataSource.movieList.results),
                 movieViewModel.movieUiState
+            )
+        }
+
+    @Test
+    fun movieViewModel_getMovieById_verifyMovieByIdUiStateSuccess() =
+        runTest {
+            val movieVieModel = MovieViewModel(moviesRepository = FakeNetworkMoviesRepository())
+            Assert.assertEquals(
+                MovieDetailsUiState.Loading,
+                movieVieModel.movieDetailsUiState
             )
         }
 }

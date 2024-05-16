@@ -9,7 +9,7 @@ class FakeNetworkMoviesRepository: MoviesRepository {
         return FakeDataSource.movieList
     }
     override suspend fun getMovieById(id: Int): MovieDetails {
-        TODO("Not yet implemented")
+        return FakeDataSource.movieDetails
     }
 
     override suspend fun getMovieBySearch(param: String): MovieList {
